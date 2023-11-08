@@ -17,6 +17,13 @@
             background-color: rgb(41, 41, 41);
             color: white;
         }
+        .errorSenha{
+            border: solid red;
+            color: white;
+            background-color: rgb(219, 94, 94);
+            font-weight: bolder;
+        }
+
     </style>
     <nav>
         <a href="/index.html">Home</a>
@@ -77,9 +84,10 @@
             <div>
                 <label for="email">E-mail:</label><input type="email" name="email" id="" required>
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha1" placeholder="Digite a sua Senha">
-                <input type="password" name="senha" id="senha2" placeholder="Confirme a sua Senha">
+                <input type="password" name="senha" id="senha1" onchange="compararSenha()" placeholder="Digite a sua Senha">
+                <input type="password" name="senha" id="senha2" onchange="compararSenha()" placeholder="Confirme a sua Senha">
                 <input type="button" onclick="verSenha()" id="btnVer" value="Ver">
+                <p id="errorText"></p>
             </div>
             <button type="submit">Enviar</button>
             <button type="button" onclick="limpar()">Limpar</button>

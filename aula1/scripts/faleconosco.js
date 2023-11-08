@@ -26,7 +26,7 @@ const estadosBrasil = [
     { sigla: 'SP', nome: 'São Paulo' },
     { sigla: 'SE', nome: 'Sergipe' },
     { sigla: 'TO', nome: 'Tocantins' }
-  ];
+];
 function limpar() {
     // document.getElementById("formulario").reset();
     const nome = document.querySelector('#nome')
@@ -49,37 +49,55 @@ function verSenha() {
     }
 }
 function modoEscuro() {
-     let btnModo = document.getElementById('btnModo')
+    let btnModo = document.getElementById('btnModo')
     if (btnModo.value == 'Escuro') {
         document.getElementById('principal').classList.add('modoEscuro')
         btnModo.value = 'Claro'
-    }else{
-        console.log ('remover')
+    } else {
+        console.log('remover')
         document.getElementById('principal').classList.remove('modoEscuro')
-        
+
     }
 }
-function verOutros(){
+function verOutros() {
     const outros = document.getElementById('outros')
     const genero = document.getElementsByName('genero')
-    if (genero[2].checked){
+    if (genero[2].checked) {
         outros.disabled = false
-    }else{
+    } else {
         outros.disabled = true
     }
 }
-function verEstados(){
+function verEstados() {
     const naturalidade = document.getElementById('naturalidade')
     const nacionalidade = document.getElementById('nacionalidade')
-    if (nacionalidade.value == 'BR'){
-        for(let i=0;i<estadosBrasil.length;i++){
+    if (nacionalidade.value == 'BR') {
+        for (let i = 0; i < estadosBrasil.length; i++) {
             let option = document.createElement('option')
             option.setAttribute('value', estadosBrasil[i].sigla)
             option.textContent = estadosBrasil[i].nome
             naturalidade.appendChild(option)
         }
         naturalidade.hidden = false
-    }else{
+    } else {
         naturalidade.hidden = true
     }
 }
+function compararSenha() {
+    let senha1 = document.getElementById('senha1')
+    let senha2 = document.getElementById('senha2')
+    let errorText = document.getElementById('errorText')
+
+    if (senha2.value !== '') {
+        if (senha1.value !== senha2.value) {
+            senha1.classList.add('errorSenha')
+            senha2.classList.add('errorSenha')
+            errorText.innerHTML= 'As senhas não conferem'
+        } else {
+            senha1.classList.remove('errorSenha')
+            senha2.classList.remove('errorSenha')
+            errorText.innerHTML= ''
+        }
+    }
+}
+
