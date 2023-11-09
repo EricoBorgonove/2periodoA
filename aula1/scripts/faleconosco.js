@@ -100,4 +100,21 @@ function compararSenha() {
         }
     }
 }
+function pesquisarCep(){
+    const cep = document.getElementById('cep').value
+    if (cep ===''){
+        alert('campo cep vazio')
+    }else if (cep.length !=8){
+        alert ('digite um cep valido')
+    }else{
+        viacep(cep)
+    }
+}
 
+function viacep (cep){
+    fetch(`https://viacep.com.br/ws/${cep}/json`)
+    .then(response =>response.json())
+    .then (response =>{
+        document.querySelector('#logradouro').value = response.logradouro
+    })
+}
